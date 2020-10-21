@@ -10,7 +10,7 @@ puts 'seeding stuff'
   Restaurant.create!(
     name: Faker::Restaurant.name,
     address: Faker::Address.street_address,
-    category: %w[chinese italian japanese french belgian].sample,
+    category: Restaurant::CATEGORIES.sample,
     phone_number: Faker::PhoneNumber.phone_number
   )
 end

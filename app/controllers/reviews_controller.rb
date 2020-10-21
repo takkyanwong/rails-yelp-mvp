@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     redirect_to restaurant_path(@review.restaurant)
-end
+  end
 
   private
 

@@ -2,7 +2,7 @@
   <%= f.input :name %>
   <%= f.input :address %>
   <%= f.input :phone_number %>
-  <%= f.input :category, as: :select, collection: %w(chinese french belgian italian japanese)  %>
-  // TODO Create a variable in the Model
+  <%= f.input :category, as: :select, collection: Restaurant::CATEGORIES  %>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+<% # Restaurant::CATEGORIES %>
