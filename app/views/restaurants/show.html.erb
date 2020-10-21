@@ -1,0 +1,38 @@
+<h1 class="mb-3"><%= @restaurant.name  %></h1>
+
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category %></p>
+
+<div class="card" style="padding: 10px 10px;">
+<% if @restaurant.reviews.empty? %>
+  <%= "There are not reviews for this restaurant yet :( Click on 'Leave a review' now!" %>
+<% else %>
+  <% @restaurant.reviews.each do |review| %>
+  <blockquote>
+    <%= review.content %>
+          <%= link_to review_path(review),
+                      method: :delete,
+                      data: { confirm: "Delete this review?" }, class: 'btn btn-danger' do %>
+                    <i class="far fa-trash-alt"></i>   Delete Review
+                    <% end %>
+  </blockquote>
+  <% end %>
+<% end %>
+</div>
+
+<p style='margin-top: 10px;'>
+<%= link_to restaurant_path(@restaurant),
+method: :delete,
+data: { confirm: "Delete #{@restaurant.name}?" }, class: 'btn btn-danger' do %>
+  <i class="far fa-trash-alt"></i> Delete Restaurant
+<% end %></p>
+
+<p><%= link_to edit_restaurant_path(@restaurant), class: 'btn btn-warning' do %>
+  Edit
+<% end %>
+<%= link_to new_restaurant_review_path(@restaurant), class: 'btn btn-info' do %>
+  Leave a review
+  <% end %></p>
+
+<p><%= link_to '< Back to the restaurants list', restaurants_path, class: 'btn btn-success'%></p>
